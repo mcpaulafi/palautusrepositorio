@@ -2,14 +2,16 @@
 name = "nhl-statistics-1"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Paula Meuronen <paula.meuronen@helsinki.fi>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 
+
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.2"
-coverage = "^7.3.2"
+pytest = "^8.3.3"
+coverage = "^7.6.4"
 
 [build-system]
 requires = ["poetry-core"]
