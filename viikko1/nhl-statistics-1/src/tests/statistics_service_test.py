@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -43,6 +43,34 @@ class TestStatisticsService(unittest.TestCase):
     def test_top_players_request_more_than_exists(self):
         top_players = self.stats.top(10)  # Pyynnössä on enemmän pelaajia kuin listassa on
         self.assertEqual(len(top_players), 5)  # Oletetaan, että alkuperäisessä listassa on 5 pelaajaa
+
+    def test_top_by_points(self):
+        top_players = self.stats.top(3, SortBy.POINTS)
+        self.assertEqual(len(top_players), 3)
+        self.assertEqual(top_players[0].name, "Gretzky")
+        self.assertEqual(top_players[1].name, "Lemieux")
+        self.assertEqual(top_players[2].name, "Yzerman")
+
+    def test_top_by_goals(self):
+        top_players = self.stats.top(3, SortBy.GOALS)
+        self.assertEqual(len(top_players), 3)
+        self.assertEqual(top_players[0].name, "Lemieux")
+        self.assertEqual(top_players[1].name, "Yzerman")
+        self.assertEqual(top_players[2].name, "Kurri")
+
+    def test_top_by_assists(self):
+        top_players = self.stats.top(3, SortBy.ASSISTS)
+        self.assertEqual(len(top_players), 3)
+        self.assertEqual(top_players[0].name, "Gretzky")
+        self.assertEqual(top_players[1].name, "Yzerman")
+        self.assertEqual(top_players[2].name, "Lemieux")
+
+    def test_top_with_default_sort(self):
+        top_players = self.stats.top(3)
+        self.assertEqual(len(top_players), 3)
+        self.assertEqual(top_players[0].name, "Gretzky")
+        self.assertEqual(top_players[1].name, "Lemieux")
+        self.assertEqual(top_players[2].name, "Yzerman")
 
 if __name__ == '__main__':
     unittest.main()
