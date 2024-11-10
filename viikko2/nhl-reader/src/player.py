@@ -9,4 +9,4 @@ class Player:
         self.id = dict['id']
 
     def __str__(self):
-        return f"{self.name} + {self.assists}"
+        return f"{self.name:20} {self.team} {self.goals:<3} + {self.assists:<2} = {self.goals+self.assists}"
