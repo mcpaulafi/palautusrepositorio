@@ -2,7 +2,6 @@ from urllib import request
 from project import Project
 import toml
 
-
 class ProjectReader:
     def __init__(self, url):
         self._url = url
