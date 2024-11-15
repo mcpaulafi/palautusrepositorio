@@ -1,0 +1,8 @@
+__pycache__
+entities/__pycache__
+repositories/__pycache__
+services/__pycache__
+report.html
+output.xml
+log.html
+*.log
