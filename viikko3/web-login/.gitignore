@@ -6,3 +6,8 @@ report.html
 output.xml
 log.html
 *.log
+*.temp
+interactive_console_output.xml
+*_output.xml
+*.code-workspace
+selenium-screenshot*
