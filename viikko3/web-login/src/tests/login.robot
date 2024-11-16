@@ -46,5 +46,5 @@ Set Password
 *** Keywords ***
 Reset Application Create User And Go To Login Page
     Reset Application
-    Create User  kalle  kalle123
+    Create User  kalle  kalle123  kalle123
     Go To Login Page
