@@ -30,4 +30,3 @@ Kun äänet on annettu, aloitetaan keskustelu siitä, joka sai eniten ääniä j
 Keskustelu jatkuu, kunnes kaikki aiheet on käsitelty tai aika loppuu.
 
 
-Tag muutos 1
