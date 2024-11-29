@@ -59,10 +59,10 @@ class IntJoukko:
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            for j in range(0, len(b_taulu)):
-                if a_taulu[i] == b_taulu[j]:
-                    y.lisaa(b_taulu[j])
+        for i in a.to_int_list():
+            for j in b.to_int_list():
+                if i == j:
+                    y.lisaa(j)
 
         return y
 
