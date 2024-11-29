@@ -15,9 +15,12 @@ class Summa:
     def suorita(self):
         try:
             arvo = int(self.syote())
+            self.sovelluslogiikka.tallenna_edellinen_arvo()
             self.sovelluslogiikka.plus(arvo)
         except ValueError:
             print("Virheellinen syöte.")
+    def kumoa(self):
+        self.sovelluslogiikka.palauta_edellinen_arvo()
 
 class Erotus:
     def __init__(self, sovelluslogiikka, syote):
@@ -26,9 +29,12 @@ class Erotus:
     def suorita(self):
         try:
             arvo = int(self.syote())
+            self.sovelluslogiikka.tallenna_edellinen_arvo()
             self.sovelluslogiikka.miinus(arvo)
         except ValueError:
             print("Virheellinen syöte.")
+    def kumoa(self):
+        self.sovelluslogiikka.palauta_edellinen_arvo()
 
 class Nollaus:
     def __init__(self, sovelluslogiikka, syote):
@@ -36,9 +42,12 @@ class Nollaus:
         self.syote = syote
     def suorita(self):
         try:
+            self.sovelluslogiikka.tallenna_edellinen_arvo()
             self.sovelluslogiikka.nollaa()
         except ValueError:
             print("Virheellinen syöte.")
+    def kumoa(self):
+        self.sovelluslogiikka.palauta_edellinen_arvo()
 
 class Kumoa:
     def __init__(self, sovelluslogiikka, syote):
@@ -49,12 +58,13 @@ class Kayttoliittyma:
     def __init__(self, sovelluslogiikka, root):
         self._sovelluslogiikka = sovelluslogiikka
         self._root = root
+        self._viimeisin_komento = None
  
         self._komennot = {
             Komento.SUMMA: Summa(sovelluslogiikka, self._lue_syote),
             Komento.EROTUS: Erotus(sovelluslogiikka, self._lue_syote),
             Komento.NOLLAUS: Nollaus(sovelluslogiikka, self._lue_syote),
-            Komento.KUMOA: Kumoa(sovelluslogiikka, self._lue_syote) # ei ehkä tarvita täällä...
+            Komento.KUMOA: Kumoa(sovelluslogiikka, self._lue_syote) 
         }
 
     def kaynnista(self):
@@ -101,8 +111,13 @@ class Kayttoliittyma:
         return self._syote_kentta.get()
 
     def _suorita_komento(self, komento):
-        komento_olio = self._komennot[komento]
-        komento_olio.suorita()
+        if komento == Komento.KUMOA and self._viimeisin_komento:
+            self._viimeisin_komento.kumoa()
+        else:
+            komento_olio = self._komennot[komento]
+            komento_olio.suorita()
+            self._viimeisin_komento = komento_olio
+
         self._kumoa_painike["state"] = constants.NORMAL
 
         if self._sovelluslogiikka.arvo() == 0:
