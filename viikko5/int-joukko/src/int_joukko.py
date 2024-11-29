@@ -33,8 +33,7 @@ class IntJoukko:
         return False
 
     def kasvata_lista(self):
-        for i in range(0, self.kasvatuskoko):
-            self.ljono.append(0)
+        self.ljono.extend([0] * self.kasvatuskoko)
 
     def mahtavuus(self):
         return self.alkioiden_lkm
