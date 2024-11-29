@@ -2,6 +2,17 @@ class Player:
     def __init__(self, name, points=0):
         self.name = name
         self.points = points
+        self.score = self.set_score()
+    def set_score(self):
+        if self.points == 0:
+            return "Love"
+        elif self.points == 1:
+            return "Fifteen"
+        elif self.points == 2:
+            return "Thirty"
+        elif self.points == 3:
+            return "Forty"
+        return "Deuce"
 
 class TennisGame:
     def __init__(self, player1_name, player2_name):
