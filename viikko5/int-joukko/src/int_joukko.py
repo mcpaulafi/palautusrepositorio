@@ -44,14 +44,12 @@ class IntJoukko:
     @staticmethod
     def yhdiste(a, b):
         x = IntJoukko()
-        a_taulu = a.to_int_list()
-        b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            x.lisaa(a_taulu[i])
+        for i in a.to_int_list():
+            x.lisaa(i)
 
-        for i in range(0, len(b_taulu)):
-            x.lisaa(b_taulu[i])
+        for j in b.to_int_list():
+            x.lisaa(j)
 
         return x
 
