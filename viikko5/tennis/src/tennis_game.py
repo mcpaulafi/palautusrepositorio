@@ -1,18 +1,19 @@
+def set_score(points):
+    if points == 0:
+        return "Love"
+    elif points == 1:
+        return "Fifteen"
+    elif points == 2:
+        return "Thirty"
+    elif points == 3:
+        return "Forty"
+    return "Deuce"
+
+
 class Player:
     def __init__(self, name, points=0):
         self.name = name
         self.points = points
-        self.score = self.set_score()
-    def set_score(self):
-        if self.points == 0:
-            return "Love"
-        elif self.points == 1:
-            return "Fifteen"
-        elif self.points == 2:
-            return "Thirty"
-        elif self.points == 3:
-            return "Forty"
-        return "Deuce"
 
 class TennisGame:
     def __init__(self, player1_name, player2_name):
@@ -31,12 +32,8 @@ class TennisGame:
         temp_score = 0
 
         if self.player1.points == self.player2.points:
-            if self.player1.points == 0:
-                score = "Love-All"
-            elif self.player1.points == 1:
-                score = "Fifteen-All"
-            elif self.player1.points == 2:
-                score = "Thirty-All"
+            if self.player1.points <2:
+                score = set_score(self.player1.points) + "-All"
             else:
                 score = "Deuce"
         elif self.player1.points >= 4 or self.player2.points >= 4:
@@ -51,20 +48,21 @@ class TennisGame:
             else:
                 score = "Win for player2"
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.player1.points
-                else:
-                    score = score + "-"
-                    temp_score = self.player2.points
+            score = set_score(self.player1.points) + "-" + set_score(self.player2.points)
+            # for i in range(1, 3):
+            #     if i == 1:
+            #         temp_score = self.player1.points
+            #     else:
+            #         score = score + "-"
+            #         temp_score = self.player2.points
 
-                if temp_score == 0:
-                    score = score + "Love"
-                elif temp_score == 1:
-                    score = score + "Fifteen"
-                elif temp_score == 2:
-                    score = score + "Thirty"
-                elif temp_score == 3:
-                    score = score + "Forty"
+            #     if temp_score == 0:
+            #         score = score + "Love"
+            #     elif temp_score == 1:
+            #         score = score + "Fifteen"
+            #     elif temp_score == 2:
+            #         score = score + "Thirty"
+            #     elif temp_score == 3:
+            #         score = score + "Forty"
 
         return score
