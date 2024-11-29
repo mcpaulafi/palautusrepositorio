@@ -29,27 +29,33 @@ class TennisGame:
         self.player2.points += 1
         return
 
-    def get_score(self):
-        print("POINTS", self.player1.points, self.player2.points)
-        if self.player1.points < 4 and self.player2.points < 4:
-            if self.player1.points == self.player2.points:
-                if self.player1.points <=2:
-                    self.score = set_score(self.player1.points) + "-All"
-                else:
-                    self.score = "Deuce"
+    def score_less_than_four(self):
+        if self.player1.points == self.player2.points:
+            if self.player1.points <=2:
+                self.score = set_score(self.player1.points) + "-All"
             else:
-                self.score = set_score(
-                    self.player1.points) + "-" + set_score(
-                    self.player2.points)
+                self.score = "Deuce"
         else:
-            print("yli4")
-            if self.minus_result == 1:
-                self.score = "Advantage player1"
-            elif self.minus_result == -1:
-                self.score = "Advantage player2"
-            elif self.minus_result >= 2:
-                self.score = "Win for player1"
-            else:
-                self.score = "Win for player2"
+            self.score = set_score(
+                self.player1.points) + "-" + set_score(
+                self.player2.points)
+
+    def score_more_than_four(self):
+        if self.minus_result == 1:
+            self.score = "Advantage player1"
+        elif self.minus_result == -1:
+            self.score = "Advantage player2"
+        elif self.minus_result >= 2:
+            self.score = "Win for player1"
+        else:
+            self.score = "Win for player2"
+
+    def get_score(self):
+#        print("POINTS", self.player1.points, self.player2.points)
+        if self.player1.points < 4 and self.player2.points < 4:
+            self.score_less_than_four()
+        else:
+            self.score_more_than_four()
+
 
         return self.score
