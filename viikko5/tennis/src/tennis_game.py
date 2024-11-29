@@ -1,7 +1,7 @@
 class Player:
-    def __init__(self, name, score=0):
+    def __init__(self, name, points=0):
         self.name = name
-        self.score = score
+        self.points = points
 
 class TennisGame:
     def __init__(self, player1_name, player2_name):
@@ -10,26 +10,26 @@ class TennisGame:
 
     def won_point(self, player_name):
         if self.player1.name == player_name:
-            self.player1.score += 1
+            self.player1.points += 1
             return
-        self.player2.score += 1
+        self.player2.points += 1
         return
 
     def get_score(self):
         score = ""
         temp_score = 0
 
-        if self.player1.score == self.player2.score:
-            if self.player1.score == 0:
+        if self.player1.points == self.player2.points:
+            if self.player1.points == 0:
                 score = "Love-All"
-            elif self.player1.score == 1:
+            elif self.player1.points == 1:
                 score = "Fifteen-All"
-            elif self.player1.score == 2:
+            elif self.player1.points == 2:
                 score = "Thirty-All"
             else:
                 score = "Deuce"
-        elif self.player1.score >= 4 or self.player2.score >= 4:
-            minus_result = self.player1.score - self.player2.score
+        elif self.player1.points >= 4 or self.player2.points >= 4:
+            minus_result = self.player1.points - self.player2.points
 
             if minus_result == 1:
                 score = "Advantage player1"
@@ -42,10 +42,10 @@ class TennisGame:
         else:
             for i in range(1, 3):
                 if i == 1:
-                    temp_score = self.player1.score
+                    temp_score = self.player1.points
                 else:
                     score = score + "-"
-                    temp_score = self.player2.score
+                    temp_score = self.player2.points
 
                 if temp_score == 0:
                     score = score + "Love"
