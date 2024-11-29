@@ -6,36 +6,27 @@ class IntJoukko:
     def __init__(self, kapasiteetti=5, kasvatuskoko=5):
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
-
         self.ljono = self._luo_lista(self.kapasiteetti)
-
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
         on = 0
-
         for i in range(0, self.alkioiden_lkm):
             if n == self.ljono[i]:
                 on = on + 1
-
         if on > 0:
             return True
-        else:
-            return False
+        return False
 
     def lisaa(self, n):
-        ei_ole = 0
-
         if self.alkioiden_lkm == 0:
             self.ljono[0] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
+            self.alkioiden_lkm += 1
             return True
-        else:
-            pass
 
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
+            self.alkioiden_lkm += 1
 
             # ei mahdu enempää, luodaan uusi säilytyspaikka luvuille
             if self.alkioiden_lkm % len(self.ljono) == 0:
