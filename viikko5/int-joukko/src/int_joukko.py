@@ -15,15 +15,14 @@ class IntJoukko:
         return False
 
     def lisaa(self, n):
-        if self.kuuluu(n):
-            return True
-        else:
+        if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
             self.alkioiden_lkm += 1
             # ei mahdu enempää, luodaan uusi säilytyspaikka luvuille
             if self.alkioiden_lkm % len(self.ljono) == 0:
                 self.kasvata_lista()
             return True
+        return False
 
     def poista(self, n):
         if self.kuuluu(n):
