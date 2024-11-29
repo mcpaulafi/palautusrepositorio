@@ -42,7 +42,9 @@ class TennisGame:
                 self.player2.points)
 
     def score_after_four(self):
-        if self.result() == 1:
+        if self.result() == 0:
+            self.score = "Deuce"
+        elif self.result() == 1:
             self.score = "Advantage player1"
         elif self.result() == -1:
             self.score = "Advantage player2"
@@ -52,7 +54,7 @@ class TennisGame:
             self.score = "Win for player2"
 
     def get_score(self):
-#        print("POINTS:", self.player1.points, "-", self.player2.points, self.result())
+        print("POINTS:", self.player1.points, "-", self.player2.points, self.result())
         if self.player1.points < 4 and self.player2.points < 4:
             self.score_less_than_four()
         else:
