@@ -39,12 +39,7 @@ class IntJoukko:
         return self.alkioiden_lkm
 
     def to_int_list(self):
-        taulu = self._luo_lista(self.alkioiden_lkm)
-
-        for i in range(0, len(taulu)):
-            taulu[i] = self.ljono[i]
-
-        return taulu
+        return self.ljono[:self.alkioiden_lkm]
 
     @staticmethod
     def yhdiste(a, b):
