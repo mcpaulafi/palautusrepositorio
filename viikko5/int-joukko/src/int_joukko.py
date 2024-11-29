@@ -44,40 +44,28 @@ class IntJoukko:
     @staticmethod
     def yhdiste(a, b):
         x = IntJoukko()
-
         for i in a.to_int_list():
             x.lisaa(i)
-
         for j in b.to_int_list():
             x.lisaa(j)
-
         return x
 
     @staticmethod
     def leikkaus(a, b):
         y = IntJoukko()
-        a_taulu = a.to_int_list()
-        b_taulu = b.to_int_list()
-
         for i in a.to_int_list():
             for j in b.to_int_list():
                 if i == j:
                     y.lisaa(j)
-
         return y
 
     @staticmethod
     def erotus(a, b):
         z = IntJoukko()
-        a_taulu = a.to_int_list()
-        b_taulu = b.to_int_list()
-
-        for i in range(0, len(a_taulu)):
-            z.lisaa(a_taulu[i])
-
-        for i in range(0, len(b_taulu)):
-            z.poista(b_taulu[i])
-
+        for i in a.to_int_list():
+            z.lisaa(i)
+        for j in b.to_int_list():
+            z.poista(j)
         return z
 
     def __str__(self):
