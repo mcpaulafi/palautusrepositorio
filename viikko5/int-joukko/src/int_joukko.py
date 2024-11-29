@@ -13,34 +13,37 @@ class IntJoukko:
         if n in self.ljono:
             return True
         return False
-        # on = 0
-        # for i in range(0, self.alkioiden_lkm):
-        #     if n == self.ljono[i]:
-        #         on = on + 1
-        # if on > 0:
-        #     return True
-        # return False
 
     def lisaa(self, n):
-        if self.alkioiden_lkm == 0:
-            self.ljono[0] = n
-            self.alkioiden_lkm += 1
+        if self.kuuluu(n):
             return True
-
-        if not self.kuuluu(n):
+        else:
             self.ljono[self.alkioiden_lkm] = n
             self.alkioiden_lkm += 1
-
             # ei mahdu enempää, luodaan uusi säilytyspaikka luvuille
             if self.alkioiden_lkm % len(self.ljono) == 0:
-                taulukko_old = self.ljono
-                self.kopioi_lista(self.ljono, taulukko_old)
-                self.ljono = self._luo_lista(self.alkioiden_lkm + self.kasvatuskoko)
-                self.kopioi_lista(taulukko_old, self.ljono)
-
+                self.kasvata_lista()
             return True
 
-        return False
+        # if self.alkioiden_lkm == 0:
+        #     self.ljono[0] = n
+        #     self.alkioiden_lkm += 1
+        #     return True
+
+        # if not self.kuuluu(n):
+        #     self.ljono[self.alkioiden_lkm] = n
+        #     self.alkioiden_lkm += 1
+
+        #     # ei mahdu enempää, luodaan uusi säilytyspaikka luvuille
+        #     if self.alkioiden_lkm % len(self.ljono) == 0:
+        #         taulukko_old = self.ljono
+        #         self.kopioi_lista(self.ljono, taulukko_old)
+        #         self.ljono = self._luo_lista(self.alkioiden_lkm + self.kasvatuskoko)
+        #         self.kopioi_lista(taulukko_old, self.ljono)
+
+        #     return True
+
+        # return False
 
     def poista(self, n):
         kohta = -1
@@ -63,9 +66,13 @@ class IntJoukko:
 
         return False
 
-    def kopioi_lista(self, a, b):
-        for i in range(0, len(a)):
-            b[i] = a[i]
+    def kasvata_lista(self):
+        for i in range(0, self.kasvatuskoko):
+            self.ljono.append(0)
+
+    # def kopioi_lista(self, a, b):
+    #     for i in range(0, len(a)):
+    #         b[i] = a[i]
 
     def mahtavuus(self):
         return self.alkioiden_lkm
