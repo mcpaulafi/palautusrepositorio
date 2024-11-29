@@ -10,13 +10,16 @@ class IntJoukko:
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
-        on = 0
-        for i in range(0, self.alkioiden_lkm):
-            if n == self.ljono[i]:
-                on = on + 1
-        if on > 0:
+        if n in self.ljono:
             return True
         return False
+        # on = 0
+        # for i in range(0, self.alkioiden_lkm):
+        #     if n == self.ljono[i]:
+        #         on = on + 1
+        # if on > 0:
+        #     return True
+        # return False
 
     def lisaa(self, n):
         if self.alkioiden_lkm == 0:
