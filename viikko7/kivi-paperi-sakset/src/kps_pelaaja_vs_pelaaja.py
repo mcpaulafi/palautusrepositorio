@@ -1,0 +1,9 @@
+from kps import KiviPaperiSakset
+
+class KPSPelaajaVsPelaaja (KiviPaperiSakset):
+    def __init__(self):
+        pass
+
+    def _toisen_siirto(self):
+        tokan_siirto = input("Toisen pelaajan siirto: ")
+        return tokan_siirto
