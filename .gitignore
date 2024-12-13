@@ -5,3 +5,4 @@ __pycache__
 .coveragerc
 htmlcov
 interactive_console_output.xml
+SmartCite*
